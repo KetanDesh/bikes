@@ -1,0 +1,64 @@
+.dropdown-menu{min-width:360px;}
+#container{margin-top: 76px;}
+.leftfilter{
+	height:400px;
+	background-color:lightblue;
+}
+.mainContainer{
+	height:auto;padding-bottom:20px;
+	margin-top:51px;
+}
+.propertyList  {
+	height:auto;
+}
+.propertyDetail {
+	height:auto;
+}
+.propertyInfo{margin-top:12px;}
+.proprtyImg{cursor: pointer;}
+.hiddenInfo{
+	position:absolute;top:0px;opacity:0.7;background-color:gray;color:white;display:none;height:93%;cursor:pointer;
+}
+.propertyInfo:hover .hiddenInfo{display:block;}
+#imageId{padding-top:14px;}
+#image{padding-top:20px;}
+#loginBox{position:absolute;height:100%;width:100%;background-color:peachpuff;}
+#msgDiv{position:absolute;left:225px;top:34%;height:8%;width:60%;background-color:red;}
+#myTab li a {font-size: 20px;}
+.imageLi:hover{background-color: lavender;}
+#result div{
+		border: 10px solid #EEEEEE;
+    		float: left;
+    		height: 300px;
+    		margin: 20px;
+    outline: 1px solid #CFCFCF;
+    width: 300px;
+		
+	    }
+    #more{
+	background: none repeat scroll 0 0 #EEEEEE;
+        border: 1px solid #CFCFCF;
+        color: #000000;
+        display: none;
+        font-weight: bold;
+        right: 0px;
+        padding: 5px;
+        position: fixed;
+        bottom: 20%;
+
+	    }
+	    #no-more{
+		background: none repeat scroll 0 0 #EEEEEE;
+    border: 1px solid #CFCFCF;
+    color: #000000;
+    display: none;
+    font-weight: bold;
+    right: 0px;
+    padding: 5px;
+    position: fixed;
+    bottom: 20%;
+
+	    }
+	    #result{
+		
+	    }
