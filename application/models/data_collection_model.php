@@ -11,7 +11,10 @@ class Data_collection_model extends CI_Model{
         if($query === TRUE){
             return TRUE;
         } else {
-            return FALSE;
+            echo "outside";
+            
+            $register_array = array();
+            //return FALSE;
         }
     }
     function GetDealer(){

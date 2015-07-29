@@ -85,7 +85,7 @@ class Valuation extends CI_Controller {
                 }
                 else
                     
-                    echo "<td><input type='radio' name='bikeId' id='bikeId' value={$bike_id} >";
+                    echo "<td><input type='radio' name='bikeId' id='bikeId' value={$bike_id}  required='true'>";
                     echo "</td> <td>{$row->cc}</td><td>".boolToText($row->analogMeter)."</td><td>".boolToText($row->digitalMeter)."</td><td>".boolToText($row->tachometer).
                         "</td><td>".boolToText($row->dtsi)."</td><td>".boolToText($row->kickStart)."</td> <td>".boolToText($row->selfStart).
                         "</td> <td>$row->wheelType</td> <td>$row->rearBrakeType</td><td>".$row->frontBrakeType.

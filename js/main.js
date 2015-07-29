@@ -1,19 +1,22 @@
 $(document).ready(function(){
-    $("#dealerM").addClass("active");
+    //$("#dealerM").addClass("active");
     var baseurl =document.location.origin+'/bikes';
     var location = window.location.hash;
-    if(location = "#add_bike"){
-        $("#add_dealer").removeClass("active");
-        $("#add_bike").addClass("active");
-        $("#bikeM").addClass("active");
-        $("#dealerM").removeClass("active");
-    }
-    if(location = "#add_dealer"){
-        $("#dealerM").addClass("active");
-        $("#add_dealer").addClass("active");
-        $("#add_bike").removeClass("active");
-    }
-    console.log(location); 
+       //console.log(window.location.hash); 
+//    if(location = "#add_bike"){
+//        $("#add_dealer").removeClass("active");
+//        $("#add_bike").addClass("active");
+//        $("#bikeM").addClass("active");
+//        $("#dealerM").removeClass("active");
+//    }
+//    if(location = "#add_dealer"){
+//        $("#dealerM").addClass("active");
+//        $("#add_dealer").addClass("active");
+//        $("#add_bike").removeClass("active");
+//        $("#dealer_info").removeClass("active");
+//        $("#dealerInfoM").removeClass("active");
+//    }
+    //console.log(location); 
     $.ajax({url:baseurl+"/index.php/Dealer_data/get_dealer_list",data:{},type:"GET",
         success:function(data){
             $("#dataDealerDrp").html(data);
@@ -25,12 +28,34 @@ $(document).ready(function(){
             $("#datamakeDrp").html(data);
         }
     });
+    $("#maxPrice").blur(function(){
+        var min = $("#minPrice").val();
+        var max = $("#maxPrice").val();
+        if(min > max){
+            $("#maxPrice").focus();   
+        }
+    });
+    $.ajax({url:baseurl+"/index.php/Lead_call_funnel/get_type",data:{},type:"GET",
+        success:function(data){
+            $("#type").html(data);;
+        }
+    });
+//    $("#year").click(function(){
+//        var min = $("#minPrice").val();
+//        var max = $("#maxPrice").val();
+//        if(min > max){
+//            $("#minPrice").focus();
+//            alert("Pleas enter valid Min Max price");
+//            
+//        }
+//    });
+    
     $(".nav-tabs a").click(function(){
         $(this).tab('show');
     });
     $("#submit1").click(function(){
         var location = window.location.hash;
-       console.log(window.location.hash); 
+       //console.log(window.location.hash); 
     });
     $("#popup").click(function(){
         $("#dealerInfo").css('display','block');

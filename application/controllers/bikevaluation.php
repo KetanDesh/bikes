@@ -69,11 +69,33 @@ class BikeValuation extends REST_Controller {
         }
         if($web){
             if($on_rd_price){
-                echo "<h3>On road price : <small> Rs.$on_rd_price</small><h3>";
-                echo "<h3>Depreciated on road price:<small> Rs.$dataweb</small></h3>";
+                /*echo "<h4>On road price : <small> Rs.$on_rd_price</small><h4>";
+                echo "<h3>Depreciated on road price:<small> Rs.$dataweb</small></h3>";*/
+                echo "<table class='table table-bordered col-sm-6'><thead>
+                    <tr style='background-color:#f6f6f6;'>
+                        <th>On road price</th>
+                        <th>Depreciated on road price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><small>Rs.$on_rd_price</small></td>
+                    <td><small> Rs.$dataweb</small></td>
+                 </tr>
+                </tbody></table>";
             }else{
-            echo "<h3>Original price:<small> Rs.$bike_price</small><h3>";
-            echo "<h3>Depreciated on road price:<small> Rs.$dataweb</small></h3>";
+            echo "<table class='table table-bordered col-sm-6'><thead>
+                    <tr style='background-color:#f6f6f6;'>
+                        <th>Original price</th>
+                        <th>Depreciated on road price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><small>Rs.$bike_price</small></td>
+                    <td><small> Rs.$dataweb</small></td>
+                 </tr>
+                </tbody></table>";
             }
         }else{
             echo $response;

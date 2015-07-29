@@ -40,7 +40,7 @@ th, td {
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url().'index.php/Dealer_data#add_dealer' ?>">Dealer's Data</a></li>
             </ul>
         </li>
-        <li class="dropdown">
+        <li class="dropdown active">
             <a class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Refurbishment
             <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
@@ -49,8 +49,10 @@ th, td {
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#"></a></li>
             </ul>
         </li>
-        <li><a class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Rating
-            <span class="caret"></span></a></li>
+        <li class="active"><a class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Rating
+            <span class="caret"></span></a>
+        </li>
+        <li class="active"><a href="<?php echo base_url().'index.php/Lead_call_funnel' ?>">Lead and Call Funnel</a></li>
     </ul> 
 </nav>   
         

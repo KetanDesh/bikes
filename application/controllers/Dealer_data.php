@@ -10,6 +10,7 @@ class Dealer_data extends CI_Controller {
         $this->load->model("data_collection_model");
         $data['title']="Dealer Pricings";
         $this->load->view('include/header',$data);
+        $data['default'] ='active';
         $this->load->view('Dealer',$data);
     }
     /*function get_dealer_list(){
@@ -37,6 +38,7 @@ class Dealer_data extends CI_Controller {
             echo $output;
     }
     function add_dealer_data(){
+        $data['option'] =  array();
        // $this->data_collection_model->dealer_post($dealerName,$description,$pincode,$Location);
         $data['title'] = 'Add dealer';
         $this->load->view('include/header',$data);
@@ -57,7 +59,10 @@ class Dealer_data extends CI_Controller {
                         );
         $insert = $this->data_collection_model->AddDealer($register_array);
         if($insert === TRUE){
-            $data['msg'] = "Data inserted Successfully";
+            $data['msg'] = "Dealer Data inserted Successfully";
+            $data['bikeClass'] = '';
+            $data['dealerClass'] = 'active';
+            $data['default'] = '';
             $this->load->view('Dealer',$data);
         } else {
             $data['msg'] = "Please enter valid data";
@@ -66,7 +71,7 @@ class Dealer_data extends CI_Controller {
         }
     }
     function add_bike_data(){
-        
+        $data['option'] =  array();
         $this->load->model("data_collection_model");
         $data['title'] = 'Add Bike';
         $this->load->view('include/header',$data);
@@ -79,15 +84,18 @@ class Dealer_data extends CI_Controller {
         $max = $this->input->post('maxPrice');
         $year = $this->input->post('year');
         
-        $this->form_validation->set_rules('dataDealerDrp', 'Dealer Name', 'required|xss_clean');
-        $this->form_validation->set_rules('minPrice', 'Min Price', 'required|xss_clean');
-        $this->form_validation->set_rules('maxPrice', 'Max Price', 'required|xss_clean');
-        $this->form_validation->set_rules('year', 'Year', 'required|xss_clean');
+        $this->form_validation->set_rules('dataDealerDrp', 'Dealer Name', 'xss_clean');
+        $this->form_validation->set_rules('minPrice', 'Min Price', 'xss_clean|callback_MinMax_check');
+        $this->form_validation->set_rules('maxPrice', 'Max Price', 'xss_clean|callback_MinMax_check');
+        $this->form_validation->set_rules('year', 'Year', 'xss_clean');
         
+      
+
         if($this->form_validation->run() == FALSE){
              $this->load->view('Dealer');
         }else{
             $modelId = $this->data_collection_model->GetModelID($make,$model,$variant);
+            
             $register_array = array('dealerID' =>$dealer,
                                     'modelID' => $modelId,
                                     'bikeid' => $bikeID,
@@ -98,8 +106,10 @@ class Dealer_data extends CI_Controller {
 
             $insert = $this->data_collection_model->AddDealerMatrix($register_array);
             if($insert === TRUE){
-                $data['msg'] = "Data inserted Successfully";
-                $data['selBike'] ="select";
+                $data['msg1'] = "Bike Data inserted Successfully";
+                $data['bikeClass'] = 'active';
+                $data['dealerClass'] = '';
+                $data['default'] = '';
                 $this->load->view('Dealer',$data);
             } else {
                 $data['msg'] = "Please enter valid data";
@@ -107,9 +117,23 @@ class Dealer_data extends CI_Controller {
                 $this->load->view('Dealer',$data);
             }
         }
+        function MinMax_check($min,$max)
+        {
+            if ($max >$max)
+            {
+                echo "str".$str;
+                $this->form_validation->set_message('Please enter valid Min Max  value', 'The %s field can not be the word "test"');
+                return FALSE;
+            }
+            else
+            {
+                return TRUE;
+            }
+        }
     }
     
     function dealer_search(){
+        
         function boolToText($value)
             {
                 if($value)

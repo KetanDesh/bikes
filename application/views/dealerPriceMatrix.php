@@ -59,7 +59,7 @@
         <input type="text" name="distance" id="distance" value ="" placeholder="Distance(KM)" >
         <input type="text" name="on_rd_price" id="on_rd_price" value ="" placeholder="On road price">
         <a id="submit" class='btn btn-primary' >Submit</a>
-        <div id="result">
+        <div id="result" class="col-sm-4 col-sm-offset-4" style="margin-top:20px;">
         </div>
         </div>
     </div><!-- row -->
