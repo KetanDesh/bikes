@@ -52,7 +52,7 @@ th, td {
         <li class="active"><a class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Rating
             <span class="caret"></span></a>
         </li>
-        <li class="active"><a href="<?php echo base_url().'index.php/Lead_call_funnel' ?>">Lead and Call Funnel</a></li>
+        <li class="active"><a href="<?php echo base_url().'index.php/Lead_call_funnel' ?>">Lead Funnel Analysis</a></li>
     </ul> 
 </nav>   
         

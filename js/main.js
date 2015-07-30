@@ -39,17 +39,7 @@ $(document).ready(function(){
         success:function(data){
             $("#type").html(data);;
         }
-    });
-//    $("#year").click(function(){
-//        var min = $("#minPrice").val();
-//        var max = $("#maxPrice").val();
-//        if(min > max){
-//            $("#minPrice").focus();
-//            alert("Pleas enter valid Min Max price");
-//            
-//        }
-//    });
-    
+    });    
     $(".nav-tabs a").click(function(){
         $(this).tab('show');
     });
@@ -167,7 +157,7 @@ $(document).ready(function(){
             }
         });
     });
-    $(document).on('keyup', '#distance,#on_rd_price,#minPrice,#maxPrice,#year,#pincode', function(event) {
+    $(document).on('keyup','#distance,#on_rd_price,#minPrice,#maxPrice,#year,#pincode', function(event) {
         var v = this.value;
         if($.isNumeric(v) === false) {
             //alert("Please enter number");
@@ -217,4 +207,9 @@ $(document).ready(function(){
             }
         });
     });
+// Date validation 
+    
+     
+     
+
 });

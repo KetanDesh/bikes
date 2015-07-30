@@ -22,12 +22,18 @@ class Lead_call_funnel extends CI_Controller {
             echo $output;
         }
         public function download(){
-            error_reporting(0);
+            $debug = $this->input->post('debug');
+            //echo $debug;
+            if($debug == 1){
+                echo "Debug";
+                //error_reporting(0);
+            }
+                error_reporting(0);
             $this->load->helper('csv');
             $this->load->model('crm/lead_call_funnel_model');
 //            $data['title']="Lead Call funnel";
-//            $this->load->view('include/header',$data);
-//            $this->load->view('lead_call_funnel_view');
+ //          $this->load->view('include/header',$data);
+ //           $this->load->view('lead_call_funnel_view');
             $leadCallData = array();
 
             //$fh = @fopen( 'php://output', 'w' );
@@ -50,62 +56,27 @@ class Lead_call_funnel extends CI_Controller {
                     $first_iteration =0;
                     foreach ($getQueries as $getQuery){
                         $columnName = $getQuery->columnName;
-                        //echo $columnName;
-                       $rows[$row_count][] = $columnName; 
-                    
+                       $rows[$row_count][] = $columnName;
+//                       echo "column".$rows[0][$row_count]."<br>";
                     }
                     $row_count = $row_count +1;
-                    continue;
+                    //continue;
                 }
+                //echo $rows[0];
                 foreach ($getQueries as $getQuery){
-                        $sqlQuery = $getQuery->sqlQuery;
-                        //echo $columnName;
-                       $rows[$row_count][] = $this->lead_call_funnel_model->main_query($sqlQuery,$source,$start_data,$end_date);
-                    
-                    }
-                              $row_count = $row_count +1;
-                
+                    $sqlQuery = $getQuery->sqlQuery;
+                    $rows[$row_count][] = $this->lead_call_funnel_model->main_query($sqlQuery,$source,$start_data,$end_date,$debug); 
+                }
+                    $row_count = $row_count +1;
             }
             //print_r($first_row);
-            $list = array (
-                    array('aaa', 'bbb', 'ccc', 'dddd'),
-                    array('123', '456', '789'),
-                    array('"aaa"', '"bbb"')
-                );
-            array_to_csv($rows,'toto.csv');
-            //fputcsv($fh, $first_row);
-            //fclose($fh);
-                            
-
-               
-        
+//            $list = array (
+//                    array('aaa', 'bbb', 'ccc', 'dddd'),
+//                    array('123', '456', '789'),
+//                    array('"aaa"', '"bbb"')
+//                );
+            array_to_csv($rows,'info.csv'); 
         }
 
 }
-  
-  /*              $source = $row->Source;
-                $getQueries = $this->lead_call_funnel_model->get_query($type);
-                foreach ($getQueries as $getQuery){
-                    $columnName = $getQuery->columnName;
-                    $sqlQuery = $getQuery->sqlQuery;
-                    
-                    $mainQueries[$columnName] = $this->lead_call_funnel_model->main_query($columnName,$sqlQuery,$source,$start_data,$end_date);
-                    
-                    
-                    //$leadCallData = $leadCallData;
-                    //print_r($leadCallData);
-                $this->load->helper('csv');
-                print_r($mainQueries);
-                array_to_csv($mainQueries[$columnName],'toto.csv');
-                }
-                array_push($leadCallData,$mainQueries);
-                array_push($leadCallData,$source);
-                print_r($leadCallData);
-            }
-            
-            
-        }
-        
-        
-}*/
 ?>
