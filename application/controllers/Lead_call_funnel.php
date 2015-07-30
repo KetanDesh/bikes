@@ -69,12 +69,6 @@ class Lead_call_funnel extends CI_Controller {
                 }
                     $row_count = $row_count +1;
             }
-            //print_r($first_row);
-//            $list = array (
-//                    array('aaa', 'bbb', 'ccc', 'dddd'),
-//                    array('123', '456', '789'),
-//                    array('"aaa"', '"bbb"')
-//                );
             array_to_csv($rows,'info.csv'); 
         }
 
