@@ -4,11 +4,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-class Dealer_data extends CI_Controller {
+class dealer_data extends CI_Controller {
     
     function index(){
         $this->load->model("data_collection_model");
         $data['title']="Dealer Pricings";
+        $data['valClass'] = "valClass";
         $this->load->view('include/header',$data);
         $data['default'] ='active';
         $this->load->view('Dealer',$data);
@@ -133,7 +134,6 @@ class Dealer_data extends CI_Controller {
     }
     
     function dealer_search(){
-        
         function boolToText($value)
             {
                 if($value)
@@ -147,7 +147,7 @@ class Dealer_data extends CI_Controller {
         $Data['distDealer'] = $this->data_collection_model->GetDistDealer($dealer);
         $output = null;
         $years_array = array();
-        $output .="<table style='width:100%'><tr><td rowspan='2'><b>Make-Model-Variant</b></td><th colspan='15'>Specs</th>";
+        $output .="<table style='width:100%'><tr><td rowspan='2'><b>Make-Model-Variant</b></td><th colspan='15'><center>Specs</center></th>";
         foreach ($Data['yearlist'] as $row1){
             //array_push($years_array,$row1->year);
             $output.="<td rowspan='2'><b>{$row1->year}</b></td>";
@@ -155,6 +155,7 @@ class Dealer_data extends CI_Controller {
         $output .="</tr>";
         $output .="<tr><th>cc </th><th>AnalogMeter </th><th>DigitalMeter </th><th>Tachometer</th><th>DTSi</th><th>Kick Start</th> <th>Self Start</th> <th>Wheel Type</th> <th>Rear Brake</th><th>Front Brake</th><th>ABS</th><th>Digital Meter</th><th>Manufactured Year</th><th>Discontinued Year</th><th>Color</th></tr>";
         foreach ($Data['distDealer'] as $row2){
+            echo "ModelID".$row2->modelId;
             $mmvlists = $this->data_collection_model->getBikeDetailsfromModelId($row2->modelId);
             foreach ($mmvlists as $mmvlist){
                 $make_model_variant = $mmvlist->make."-".$mmvlist->model."-".$mmvlist->variant;

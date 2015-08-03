@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Valuation extends CI_Controller {
+class valuation extends CI_Controller {
 
 	/*
 	 * Index Page for this controller.
@@ -13,6 +13,7 @@ class Valuation extends CI_Controller {
 	//$this->load->view('welcome_message');
             $this->load->model('drop_downhandler_model');
             $data['title']="Dealer Price Matrix";
+            $data['valClass'] = "valClass";
             $this->load->view('include/header',$data);
             $data['countryDrop'] = $this->drop_downhandler_model->getMake();
             $this->load->view('dealerPriceMatrix',$data);

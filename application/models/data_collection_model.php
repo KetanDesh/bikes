@@ -64,7 +64,7 @@ class Data_collection_model extends CI_Model{
     }
     public function getBikeDetailsfromBikeId($bikeid){
         $query = $this->db->query("SELECT * FROM BikeValuation.Specifications WHERE bikeId='{$bikeid}'");
-        //echo $this->db->last_query();
+        echo $this->db->last_query();
         return $query->result();
     }
     function getMinMaxPrices($BikeId, $DealerId, $Year){ 

@@ -29,7 +29,7 @@
                         }
                     ?>
                     <div class="col-md-offset-1">
-                        <?php echo form_open('Dealer_data/add_dealer_data','class="form-horizontal col-sm-offset-2"');?>
+                        <?php echo form_open('dealer_data/add_dealer_data','class="form-horizontal col-sm-offset-2"');?>
                         <div class="form-group">
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="dealerName" id="dealerName" value="" placeholder="Dealer Name" autofocus="true" required="true">
@@ -64,7 +64,7 @@
                         }
                     ?>
                     <div style="padding-top:66px;">
-                        <?php echo form_open('Dealer_data/add_bike_data#add_bike','class="form-horizontal"');?>
+                        <?php echo form_open('dealer_data/add_bike_data#add_bike','class="form-horizontal"');?>
                         <?php /*echo form_dropdown('dealerDrp',$dealerlist,'','class="required" id="dealerDrp"');*/?> 
                         
                         <select id="dataDealerDrp" name="dataDealerDrp" required="true">

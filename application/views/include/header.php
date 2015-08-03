@@ -20,6 +20,8 @@ th, td {
 }
 .bikeInfo{overflow: scroll;}
 .dumbikeinfo{padding-top:10px;}
+.input_box{margin-left:5px;}
+.activeAnc{background-color: red;}
 </style>
 <script>
     
@@ -32,16 +34,16 @@ th, td {
         <li class="active"><a href="<?php echo base_url();?>">Credr.com</a></li>
 
         <li class="dropdown active">
-            <a class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Valuation
+            <a class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style='<?php if(isset($valClass)){ echo 'background-color: red';} ?>'>Valuation
             <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="min-width:200px;">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url().'index.php/Valuation' ?>">Sourcing</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url().'index.php/valuation' ?>">Sourcing</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url().'index.php/Dealer_data#add_dealer' ?>">Dealer's Data</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url().'index.php/dealer_data#add_dealer' ?>">Dealer's Data</a></li>
             </ul>
         </li>
-        <li class="dropdown active">
-            <a class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Refurbishment
+        <li class="dropdown">
+            <a class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style='<?php if(isset($refClass)){ echo 'background-color: red';} ?>'>Refurbishment
             <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Api(json)</a></li>
@@ -49,10 +51,9 @@ th, td {
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#"></a></li>
             </ul>
         </li>
-        <li class="active"><a class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Rating
+        <li class=""><a class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style='<?php if(isset($ratingClass)){ echo 'background-color: red';} ?>'>Rating
             <span class="caret"></span></a>
         </li>
-        <li class="active"><a href="<?php echo base_url().'index.php/Lead_call_funnel' ?>">Lead Funnel Analysis</a></li>
     </ul> 
 </nav>   
         

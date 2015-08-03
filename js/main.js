@@ -2,28 +2,14 @@ $(document).ready(function(){
     //$("#dealerM").addClass("active");
     var baseurl =document.location.origin+'/bikes';
     var location = window.location.hash;
-       //console.log(window.location.hash); 
-//    if(location = "#add_bike"){
-//        $("#add_dealer").removeClass("active");
-//        $("#add_bike").addClass("active");
-//        $("#bikeM").addClass("active");
-//        $("#dealerM").removeClass("active");
-//    }
-//    if(location = "#add_dealer"){
-//        $("#dealerM").addClass("active");
-//        $("#add_dealer").addClass("active");
-//        $("#add_bike").removeClass("active");
-//        $("#dealer_info").removeClass("active");
-//        $("#dealerInfoM").removeClass("active");
-//    }
-    //console.log(location); 
-    $.ajax({url:baseurl+"/index.php/Dealer_data/get_dealer_list",data:{},type:"GET",
+    
+    $.ajax({url:baseurl+"/index.php/dealer_data/get_dealer_list",data:{},type:"GET",
         success:function(data){
             $("#dataDealerDrp").html(data);
             $("#dealerSearchDrp").html(data);
         }
     });
-    $.ajax({url:baseurl+"/index.php/Dealer_data/get_make_list",data:{},type:"GET",
+    $.ajax({url:baseurl+"/index.php/dealer_data/get_make_list",data:{},type:"GET",
         success:function(data){
             $("#datamakeDrp").html(data);
         }
@@ -35,11 +21,16 @@ $(document).ready(function(){
             $("#maxPrice").focus();   
         }
     });
-    $.ajax({url:baseurl+"/index.php/Lead_call_funnel/get_type",data:{},type:"GET",
+    $.ajax({url:baseurl+"/index.php/lead_funnel_analysis/get_type",data:{},type:"GET",
         success:function(data){
             $("#type").html(data);;
         }
-    });    
+    });
+    $.ajax({url:baseurl+"/index.php/lead_funnel_analysis/get_city",data:{},type:"GET",
+        success:function(data){
+            $("#city").html(data);;
+        }
+    });
     $(".nav-tabs a").click(function(){
         $(this).tab('show');
     });
@@ -56,7 +47,7 @@ $(document).ready(function(){
         $("#addBike").css('display','block');
     });
     $("#makeDrp").change(function(){
-        $.ajax({url:baseurl+"/index.php/Valuation/getModel",data:{id:$(this).val()},type:"GET",
+        $.ajax({url:baseurl+"/index.php/valuation/getModel",data:{id:$(this).val()},type:"GET",
             success:function(data){
                 $("#modelDrp").html(data);
             }
@@ -64,7 +55,7 @@ $(document).ready(function(){
     });
     $("#modelDrp").change(function(){
         var make = $( "#makeDrp option:selected" ).text();
-        $.ajax({url:baseurl+"/index.php/Valuation/getVariant",data:{id:make,model:$(this).val()},type:"GET",
+        $.ajax({url:baseurl+"/index.php/valuation/getVariant",data:{id:make,model:$(this).val()},type:"GET",
             success:function(data){
                 $("#variantDrp").html(data);
             }
@@ -75,7 +66,7 @@ $(document).ready(function(){
         var model = $( "#modelDrp option:selected" ).text();
         $("#dumbikeinfo").css("display","none");
 
-        $.ajax({url:baseurl+"/index.php/Valuation/getInfo",data:{id:make,model:model,variant:$(this).val()},type:"GET",
+        $.ajax({url:baseurl+"/index.php/valuation/getInfo",data:{id:make,model:model,variant:$(this).val()},type:"GET",
             success:function(data){
                 $("#bikeInfo").html(data);
             }
@@ -83,7 +74,7 @@ $(document).ready(function(){
     });
     $("body").on("click",'#bikeId',function(){
         console.log("inside bike");
-        $.ajax({url:baseurl+"/index.php/Valuation/getLocationByBikeid",data:{bikeid:$(this).val()},type:"GET",
+        $.ajax({url:baseurl+"/index.php/valuation/getLocationByBikeid",data:{bikeid:$(this).val()},type:"GET",
             success:function(data){
                 $("#locationDrp").html(data);
             }
